@@ -47,10 +47,10 @@ public class ChatService {
             List<String> toolsUsed = new ArrayList<>();
 
             if (enabledTools.length > 0) {
-                // Call with tools
+                // Call with tools - use toolCallbacks() for ToolCallback objects
                 response = chatClient.prompt()
                         .user(userMessage)
-                        .tools(enabledTools)
+                        .toolCallbacks(enabledTools)
                         .call()
                         .content();
 
