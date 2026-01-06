@@ -200,8 +200,14 @@ def get_server_info() -> str:
 # Main Entry Point
 # =============================================================================
 if __name__ == "__main__":
-    # Run the server using SSE transport on port 3000
+    import uvicorn
+    
+    # Run the server using SSE transport on port 3001
     # Start this server first, then start the Spring app
-    print("Starting MCP Server on http://localhost:3000/sse")
-    mcp.run(transport="sse", port=3000)
+    print("Starting MCP Server on http://localhost:3001/sse")
+    
+    # Get the SSE app and run with uvicorn
+    app = mcp.sse_app()
+    uvicorn.run(app, host="0.0.0.0", port=3001)
+
 
