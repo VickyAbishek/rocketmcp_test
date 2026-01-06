@@ -22,15 +22,11 @@ spring:
         type: SYNC
         toolcallback:
           enabled: true
-        stdio:
-          root-change-notification: false
+        # SSE transport - connects to externally running Python server
+        sse:
           connections:
             python-tools:
-              command: "${user.dir}/mcp_server/venv/bin/python"
-              args:
-                - "${user.dir}/mcp_server/server.py"
-              env:
-                PYTHONUNBUFFERED: "1"
+              url: http://localhost:3000/sse
 
 # Logging configuration
 logging:

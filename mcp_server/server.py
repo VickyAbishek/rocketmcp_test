@@ -200,6 +200,8 @@ def get_server_info() -> str:
 # Main Entry Point
 # =============================================================================
 if __name__ == "__main__":
-    # Run the server using stdio transport
-    # This allows the Spring AI MCP client to communicate with this server
-    mcp.run()
+    # Run the server using SSE transport on port 3000
+    # Start this server first, then start the Spring app
+    print("Starting MCP Server on http://localhost:3000/sse")
+    mcp.run(transport="sse", port=3000)
+
